@@ -28,10 +28,38 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/questions", async (req, res) => {
-  const { username, age } = req.body;
+  const {
+    username,
+    age,
+    edu,
+    exp,
+    interest,
+    rating,
+    consume,
+    time,
+    duration,
+    freq,
+    device,
+  } = req.body;
   const user = await User.find({ username });
   if (user) {
-    await User.updateOne({ username }, { $set: { age: age } });
+    await User.updateMany(
+      { username },
+      {
+        $set: {
+          age: age,
+          edu: edu,
+          exp: exp,
+          interest: interest,
+          rating: rating,
+          consume: consume,
+          time: time,
+          duration: duration,
+          freq: freq,
+          device: device,
+        },
+      }
+    );
     return res.json({ status: true, message: "all answers inserted" });
   } else {
     return res.json({ message: "somthing went wrong" });

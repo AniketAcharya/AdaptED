@@ -1,17 +1,40 @@
+.sapat > .question-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 50px;
+  padding: 30px;
+  margin: 4rem;
+  border: 2px solid;
+  border-radius: 20px;
+}
+
 .question-form {
-  height: 100vh;
+  padding: 30px;
+  height: auto;
   width: calc(100%-8rem);
-  /* overflow-y: scroll; */
   margin: 4rem;
   border: 2px solid black;
+  border-radius: 20px;
 }
 .sapat1 {
   display: flex;
-  /* justify-content: center; */
   gap: 4px;
   align-items: center;
 }
 
 .sapat1 > label {
   margin: 0;
+}
+
+.sapat2 {
+  margin-top: 20px;
+}
+
+.raj {
+  display: flex;
+  justify-content: center;
+}
+
+.sapat {
+  font-size: x-large;
 }
