@@ -1,0 +1,17 @@
+.question-form {
+  height: 100vh;
+  width: calc(100%-8rem);
+  /* overflow-y: scroll; */
+  margin: 4rem;
+  border: 2px solid black;
+}
+.sapat1 {
+  display: flex;
+  /* justify-content: center; */
+  gap: 4px;
+  align-items: center;
+}
+
+.sapat1 > label {
+  margin: 0;
+}
