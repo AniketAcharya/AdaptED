@@ -6,6 +6,7 @@
   margin: 4rem;
   border: 2px solid;
   border-radius: 20px;
+  box-shadow: 5px 5px 50px black;
 }
 
 .question-form {
@@ -13,7 +14,8 @@
   height: auto;
   width: calc(100%-8rem);
   margin: 4rem;
-  border: 2px solid black;
+  border: 2px solid whitesmoke;
+  box-shadow: 10px 20px 50px grey;
   border-radius: 20px;
 }
 .sapat1 {

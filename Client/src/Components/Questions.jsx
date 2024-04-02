@@ -56,6 +56,7 @@ function Questions() {
                 type="radio"
                 name="age"
                 value="Under 18"
+                required
                 onChange={(e) => setAge(e.target.value)}
               />
               <label>Under 18</label>
@@ -100,6 +101,7 @@ function Questions() {
                 type="radio"
                 name="edu"
                 value="High School"
+                required
                 onChange={(e) => setEdu(e.target.value)}
               />
               <label>High School</label>
@@ -134,6 +136,7 @@ function Questions() {
                 type="radio"
                 name="exp"
                 value="Yes"
+                required
                 onChange={(e) => setExp(e.target.value)}
               />
               <label>Yes</label>
@@ -160,6 +163,7 @@ function Questions() {
                 type="radio"
                 name="interest"
                 value="Videos"
+                required
                 onChange={(e) => setInterest(e.target.value)}
               />
               <label>Videos</label>
@@ -194,6 +198,7 @@ function Questions() {
                 type="radio"
                 name="rating"
                 value="1"
+                required
                 onChange={(e) => setRating(Number(e.target.value))}
               />
               <label>1</label>
@@ -250,6 +255,7 @@ function Questions() {
                 type="radio"
                 name="comsume"
                 value="Yes"
+                required
                 onChange={(e) => setConsume(e.target.value)}
               />
               <label>Yes</label>
@@ -274,6 +280,7 @@ function Questions() {
                 type="radio"
                 name="time"
                 value="Morning"
+                required
                 onChange={(e) => setTime(e.target.value)}
               />
               <label>Morning</label>
@@ -318,6 +325,7 @@ function Questions() {
                 type="radio"
                 name="duration"
                 value="Less than 4"
+                required
                 onChange={(e) => setDuration(e.target.value)}
               />
               <label>Less than 4</label>
@@ -352,6 +360,7 @@ function Questions() {
                 type="radio"
                 name="freq"
                 value="1"
+                required
                 onChange={(e) => setFreq(Number(e.target.value))}
               />
               <label>1</label>
@@ -426,6 +435,7 @@ function Questions() {
                 type="radio"
                 name="device"
                 value="Mobile"
+                required
                 onChange={(e) => setDevice(e.target.value)}
               />
               <label>Mobile</label>
