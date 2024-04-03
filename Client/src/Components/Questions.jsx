@@ -153,7 +153,7 @@ function Questions() {
             </div>
           </div>
 
-          <div className="question-container">
+          {/* <div className="question-container">
             <label>
               If Yes, what format did you find most engaging. If no enter NA
             </label>
@@ -188,7 +188,7 @@ function Questions() {
               />
               <label>NA</label>
             </div>
-          </div>
+          </div> */}
 
           <div className="question-container">
             <label>How effective is your current learning method</label>
