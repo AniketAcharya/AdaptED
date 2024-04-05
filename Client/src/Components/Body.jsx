@@ -22,6 +22,11 @@ function Body() {
       <section className="section_Heading">
         <div className="section_container">
           <h1>Welcome {name}</h1>
+          <br />
+          <h2 style={{ color: "white", marginBottom: "10px" }}>
+            According to your current data, the most suited way of learning for
+            you is {"{will render the result of ML model}"}
+          </h2>
           <p style={{ marginBottom: "10px" }}>What do you want to learn</p>
           <div className="section_Heading_search">
             <input type="text" placeholder="Search our tutorial, e.g. HTML" />
