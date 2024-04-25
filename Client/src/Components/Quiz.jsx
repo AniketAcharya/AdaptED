@@ -1,13 +1,55 @@
-import React, { useState, useRef } from "react";
-import "../assets/Quiz.css";
-import { data } from "../assets/data";
+import React, { useState, useRef, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useQuizData } from "../Store/QuizData";
+import Axios from "axios";
+
+// import { data } from "../assets/data";
 
 function Quiz() {
+  const location = useLocation();
+  const data = location.state?.data;
+  const navigate = useNavigate();
+  const {
+    current,
+    setCurrentScore,
+    currentScore,
+    setQuizCount,
+    quizCount,
+    interest,
+    name,
+    topicName,
+  } = useQuizData();
+
   let [index, setIndex] = useState(0);
   let [question, setQuestion] = useState(data[index]);
   let [lock, setLock] = useState(false);
   let [score, setScore] = useState(0);
   let [result, setResult] = useState(0);
+  const url =
+    interest !== "Articles"
+      ? "/html/htmlAttributes/articles"
+      : "/html/htmlTagList/videos";
+
+  useEffect(() => {
+    if (result) {
+      setCurrentScore(current, score);
+      setQuizCount(quizCount + 1);
+    }
+  }, [result]);
+
+  useEffect(() => {
+    console.log(currentScore);
+  }, [currentScore]);
+
+  useEffect(() => {
+    if (quizCount === 2) {
+      const newInterest = getBest();
+      Axios.post("http://localhost:3000/auth/update", {
+        name,
+        newInterest,
+      });
+    }
+  }, [quizCount]);
 
   let Option1 = useRef(null);
   let Option2 = useRef(null);
@@ -27,6 +69,12 @@ function Quiz() {
         option_array[question.ans - 1].current.classList.add("correct");
       }
     }
+  };
+
+  const getBest = () => {
+    if (currentScore.article > currentScore.video) return "Articles";
+    else if (currentScore.article < currentScore.video) return "Videos";
+    else return interest;
   };
 
   const next = () => {
@@ -52,6 +100,17 @@ function Quiz() {
     setScore(0);
     setLock(false);
     setResult(false);
+    navigate("/");
+  };
+  console.log(url);
+  const tryNew = () => {
+    // console.log(topicName);
+    setIndex(0);
+    setQuestion(data[0]);
+    setScore(0);
+    setLock(false);
+    setResult(false);
+    navigate(url);
   };
 
   return (
@@ -100,21 +159,40 @@ function Quiz() {
                 {question.option4}
               </li>
             </ul>
-            <button onClick={next}>Next</button>
+            <button
+              onClick={next}
+              className="quiz_btn"
+              style={{ height: "75px" }}
+            >
+              Next
+            </button>
             <div className="index">
               {index + 1} of {data.length} questions
             </div>
           </>
         )}
-        {result ? (
+        {!!result && quizCount === 2 && (
+          <>
+            <h2>You scored better in {getBest()}</h2>
+          </>
+        )}
+        {!!result && quizCount === 1 && (
           <>
             <h2>
               You Scored {score} out of {data.length}
+              <br />
+              Are you staisfied with the score?
+              <button
+                onClick={reset}
+                style={{ marginRight: "10px", height: "75px" }}
+              >
+                Yes
+              </button>
+              <button onClick={tryNew} style={{ height: "75px" }}>
+                No
+              </button>
             </h2>
-            <button onClick={reset}>Reset</button>
           </>
-        ) : (
-          <></>
         )}
       </div>
     </>

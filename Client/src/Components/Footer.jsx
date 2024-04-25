@@ -7,8 +7,7 @@ const Footer = forwardRef((props, ref) => {
         <div className="socialMedia">
           <span>
             Learn anything, Adapted for you. Our website optimizes based on what
-            you already know and what your goal is. Get the most out of your
-            time and effort spent.
+            your goal is. Get the most out of your time and effort spent.
           </span>
           <a href="https://github.com/AniketAcharya">
             <i className="fa-brands fa-github"></i>

@@ -112,8 +112,31 @@ router.get("/logout", (req, res) => {
   return res.json({ status: true });
 });
 
-router.get("/user", verifyUser, (req, res) => {
-  return res.json({ status: true, username: req.user.username });
+router.get("/user", verifyUser, async (req, res) => {
+  const username = req.user.username;
+  const user = await User.find({ username });
+  const interest = user[0].interest;
+  return res.json({ status: true, username: username, interest: interest });
+});
+
+router.post("/update", async (req, res) => {
+  const username = req.body.name;
+  const interest = req.body.newInterest;
+
+  const user = await User.find({ username });
+  if (user) {
+    await User.updateOne(
+      { username },
+      {
+        $set: {
+          interest: interest,
+        },
+      }
+    );
+    return res.json({ status: true, message: "inserted" });
+  } else {
+    return res.json({ message: "somthing went wrong" });
+  }
 });
 
 export { router as UserRouter };
