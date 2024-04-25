@@ -10,7 +10,6 @@ const params = {
   q: searchQuery,
   key: API_KEY,
   cx: SEARCH_ENGINE_ID,
-  exactTerms: "classes",
 };
 
 axios
